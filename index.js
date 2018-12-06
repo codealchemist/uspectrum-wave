@@ -1,4 +1,4 @@
-module.exports = class UspectrumWave {
+module.exports = class USpectrumWave {
   constructor ({ context, buffer, source, canvas } = {}) {
     if (typeof canvas === 'string') canvas = document.getElementById(canvas)
     if (!canvas) {
