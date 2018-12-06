@@ -6,10 +6,6 @@ module.exports = class USpectrumWave {
       document.body.appendChild(canvas)
     }
     this.$canvas = canvas
-    this.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-    this.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
-    this.$canvas.width = this.width
-    this.$canvas.height = this.height
     this.canvasContext = this.$canvas.getContext('2d')
     this.background = 'black'
     this.color = 'yellow'
@@ -18,8 +14,31 @@ module.exports = class USpectrumWave {
     this.minDb = -90
     this.maxDb = -10
     this.smoothing = 0.85
+    this.setSize()
+    this.setResizer()
 
     if (context && buffer && source) this.init({ context, buffer, source })
+  }
+
+  setSize () {
+    this.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+    this.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    this.$canvas.width = this.width
+    this.$canvas.height = this.height
+  }
+
+  setResizer () {
+    let resizing = false
+
+    window.addEventListener('resize', () => {
+      if (resizing) return
+      resizing = true
+
+      setTimeout(() => {
+        this.setSize()
+        resizing = false
+      }, this.resizeThrottle)
+    })
   }
 
   init ({ context, buffer, source }) {
