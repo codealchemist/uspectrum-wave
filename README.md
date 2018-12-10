@@ -2,6 +2,8 @@
 
 Wave spectrum analyzer for WebAudio.
 
+![screenshot](https://cldup.com/B7YiReTn8s.gif)
+
 ## Install
 
 `npm i uspectrum-wave`
