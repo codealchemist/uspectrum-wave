@@ -1,6 +1,6 @@
 {
   "name": "uspectrum-wave",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wave spectrum analyzer for WebAudio.",
   "main": "index.js",
   "scripts": {
